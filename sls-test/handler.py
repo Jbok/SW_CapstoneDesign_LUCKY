@@ -1,6 +1,56 @@
 import json
+
+# import the necessary packages
+from imutils import face_utils
 import numpy as np
+import argparse
+import imutils
+import dlib
 import cv2
+import math
+
+# python AWS SDK
+import boto3
+import urllib
+from PIL import Image
+import PIL.Image
+
+
+
+def open_image(image_path, resized_path):
+    with Image.open(image_path) as image:
+        cv2.imshow(image)
+        
+def handler(event, contet):
+    BUCKET_NAME = 'sls-test-dev-serverlessdeploymentbucket-gfkswqtg50dd'
+    FILE_NAME = 'shape_predictor_68_face_landmarks.dat'
+    s3_resource = boto3.resource('s3')
+    s3_resource.Bucket(BUCKET_NAME).download_file(FILE_NAME, 'temp.dat')
+
+    
+
+
+
+"""
+client = boto3.client('s3')
+resource = boto3.re
+
+
+MODEL_FILE_NAME = 'shape_predictor_68_face_landmarks.dat'
+MODEL_LOCAL_PATH = '/tmp/' + MODEL_FILE_NAME
+
+def load_model():
+    conn = S3Connection()
+    bucket = conn.create_bucket(BUCKET_NAME)
+    key_obj = Key(bucket)
+    key_obj.key = MODEL_FILE_NAME
+
+    contents = key_obj.get_contents_to_filename(MODEL_LOCAL_PATH)
+    return joblib.load(MODEL_LOCAL_PATH)
+"""
+
+
+
 
 
 def hello(event, context):
@@ -26,11 +76,32 @@ def hello(event, context):
     """
 
 def main(event, context):
-    a = np.arange(15).reshape(3, 5)
+
+    s3_client = boto3.client('s3')
 
     print("Your numpy array:")
-    print(a)
+    
     print(cv2.__version__)
+	
+    print("FUCCCCCCCK")
+
+    bucketname = 'sls-test-dev-serverlessdeploymentbucket-gfkswqtg50dd'
+    filename = 's3.png'
+    
+    opener = urllib.URLopener()
+    myurl = 'https://s3.amazonaws.com/sls-test-dev-serverlessdeploymentbucket-gfkswqtg50dd/temp.txt'
+
+    myfile = opener.open(myurl)
+
+
+    
+    
+
+
+    
+
+
+
 
 
 if __name__ == "__main__":

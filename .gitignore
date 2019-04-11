@@ -1,0 +1,16 @@
+node_modules/
+
+#serverless setting file & zip file
+.serverless/
+
+#webpack build file
+.webpack/
+
+#trained data
+*.dat
+
+#image
+*.png
+
+#idae folder
+.idea/
