@@ -29,13 +29,14 @@ def temp(event, contet):
 def open_image(image_path, resized_path):
     with Image.open(image_path) as image:
         cv2.imshow(image)
-        
+ 
+"""       
 def handler(event, contet):
     BUCKET_NAME = 'sls-test-dev-serverlessdeploymentbucket-gfkswqtg50dd'
     FILE_NAME = 'shape_predictor_68_face_landmarks.dat'
     s3_resource = boto3.resource('s3')
     s3_resource.Bucket(BUCKET_NAME).download_file(FILE_NAME, 'temp1.dat')
-
+"""
     
 
 
