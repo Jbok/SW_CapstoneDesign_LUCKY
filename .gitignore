@@ -1,2 +1,20 @@
 node_modules/
+<<<<<<< HEAD
 package-lock.json
+=======
+
+#serverless setting file & zip file
+.serverless/
+
+#webpack build file
+.webpack/
+
+#trained data
+*.dat
+
+#image
+*.png
+
+#idae folder
+.idea/
+>>>>>>> f148cffe2535602b927e683811a1073779b03e46
