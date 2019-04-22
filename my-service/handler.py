@@ -38,7 +38,7 @@ def hello(event, context):
 
     return response
 
-def downloadTrainedData(event, context):
+def downloadTrainedData():
     BUCKET_NAME = 'lucky-faceweb-2019'
     FILE_PATH = 'TrainedData/shape_predictor_68_face_landmarks.dat'
     LOCAL_FILE_PATH = 'train.dat'
@@ -49,7 +49,6 @@ def downloadTrainedData(event, context):
 def imagetest(event, context):
     
     img_data = json.dumps(event['body'])
-    # img = base64.b64decode(img_data)
 
     fh = open("/tmp/imageToSave2.png", "wb")
     fh.write(img_data.decode('base64'))
@@ -62,11 +61,6 @@ def imagetest(event, context):
     FILE_NAME = '/tmp/imageToSave2.png'
 
     s3_client.upload_file(FILE_NAME, BUCKET_NAME, 'imageToSave.png')
-
-    # s3 = boto3.resource('s3', region_name='ap-northeast-2')
-    
-    # s3.Bucket(BUCKET_NAME).upload_file(FILE_NAME, 'imageToSave.png')
-    # im = Image.open('/tmp/imageToSave.png')
 
 
     response = {
