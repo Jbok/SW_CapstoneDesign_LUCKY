@@ -5,6 +5,10 @@ import base64
 import boto3
 from PIL import Image
 
+import cv2
+import numpy
+import dlib
+
 def respond(err, res):
     return {
         'statusCode': '400' if err else '200',
@@ -67,6 +71,19 @@ def imagetest(event, context):
 
     return response
 
+def packagetest(event, context):
+    
+    print(cv2.__version__)
+    print(numpy.version.version)
+
+
+
+    response = {
+        "statusCode": 200,
+        "body": cv2.__version__
+    }
+
+    return response
 
 
     

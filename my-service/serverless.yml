@@ -82,7 +82,9 @@ functions:
       - http:
           path: imagetest
           method: post
-          
+
+  packagetest:
+    handler: handler.packagetest  
 
 
 
