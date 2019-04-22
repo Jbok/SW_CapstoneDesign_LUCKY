@@ -84,7 +84,10 @@ functions:
           method: post
 
   packagetest:
-    handler: handler.packagetest  
+    handler: handler.packagetest
+    
+  trainedtest:
+    handler: handler.downloadTrainedData
 
 
 

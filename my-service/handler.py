@@ -9,6 +9,8 @@ import cv2
 import numpy
 import dlib
 
+s3_client = boto3.client('s3')
+
 def respond(err, res):
     return {
         'statusCode': '400' if err else '200',
@@ -36,6 +38,12 @@ def hello(event, context):
 
     return response
 
+def downloadTrainedData(event, context):
+    BUCKET_NAME = 'lucky-faceweb-2019'
+    FILE_PATH = 'TrainedData/shape_predictor_68_face_landmarks.dat'
+    LOCAL_FILE_PATH = 'train.dat'
+    
+    s3_client.download_file(BUCKET_NAME, FILE_PATH, LOCAL_FILE_PATH)
 
 
 def imagetest(event, context):
@@ -52,7 +60,7 @@ def imagetest(event, context):
 
     BUCKET_NAME = 'lucky-faceweb-2019'
     FILE_NAME = '/tmp/imageToSave2.png'
-    s3_client = boto3.client('s3')
+
     s3_client.upload_file(FILE_NAME, BUCKET_NAME, 'imageToSave.png')
 
     # s3 = boto3.resource('s3', region_name='ap-northeast-2')
